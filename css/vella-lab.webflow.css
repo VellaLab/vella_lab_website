@@ -1724,6 +1724,7 @@ p {
 body.home-page {
   position: relative;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 body.home-page::before {
@@ -1917,11 +1918,13 @@ body.home-page::after {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.hero-inline-tab:hover {
-  color: #f0f6ff;
-  letter-spacing: .18em;
-  text-shadow: 0 0 14px rgba(255, 255, 255, 0.35), 0 2px 12px rgba(0, 0, 0, 0.5);
-  transform: translateY(-3px) scale(1.04);
+@media (hover: hover) {
+  .hero-inline-tab:hover {
+    color: #f0f6ff;
+    letter-spacing: .18em;
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.35), 0 2px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px) scale(1.04);
+  }
 }
 
 .hero-inline-tab.w--current {
@@ -3134,8 +3137,12 @@ a:focus-visible, button:focus-visible {
 }
 
 @media screen and (max-width: 767px) {
+  html {
+    font-size: 85%;
+  }
+
   p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .modern-section {
@@ -3146,6 +3153,11 @@ a:focus-visible, button:focus-visible {
     min-height: 350px;
     padding-top: 16px;
     padding-bottom: 16px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
   }
 
   .hero-theme-picture .w-container {
@@ -3158,7 +3170,7 @@ a:focus-visible, button:focus-visible {
 
   .hero-inline-tabs {
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     top: 10px;
     left: 8px;
     right: 8px;
@@ -3166,8 +3178,8 @@ a:focus-visible, button:focus-visible {
   }
 
   .hero-inline-tab {
-    letter-spacing: .04em;
-    font-size: 21px;
+    letter-spacing: .03em;
+    font-size: 12px;
     text-underline-offset: 3px;
   }
 
@@ -3189,12 +3201,12 @@ a:focus-visible, button:focus-visible {
 
   .home-title {
     letter-spacing: .04em;
-    font-size: clamp(28px, 8vw, 40px);
+    font-size: clamp(24px, 6.8vw, 34px);
     gap: 8px;
   }
 
   .hero-separator-i {
-    font-size: clamp(28px, 8vw, 40px);
+    font-size: clamp(24px, 6.8vw, 34px);
     line-height: 1.02;
   }
 
@@ -3212,12 +3224,12 @@ a:focus-visible, button:focus-visible {
 
   .hero-logo-badge-text {
     letter-spacing: .06em;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .hero-subtitle {
     letter-spacing: .02em;
-    font-size: clamp(12px, 3.2vw, 14px);
+    font-size: clamp(10px, 2.7vw, 12px);
     white-space: normal;
   }
 
@@ -3245,11 +3257,11 @@ a:focus-visible, button:focus-visible {
   .mission-kicker {
     letter-spacing: .14em;
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .statement-text {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.56;
   }
 
@@ -3324,11 +3336,11 @@ a:focus-visible, button:focus-visible {
   }
 
   .home-text-title {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .home-mission {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .radial-stage {
@@ -3365,11 +3377,11 @@ a:focus-visible, button:focus-visible {
   }
 
   .heading-19.modern-heading {
-    font-size: 32px;
+    font-size: 27px;
   }
 
   .paragraph-2.modern-lead {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .focus-grid {
@@ -3377,7 +3389,27 @@ a:focus-visible, button:focus-visible {
   }
 
   .modern-section-title {
-    font-size: 30px;
+    font-size: 26px;
+  }
+
+  .team-section-title {
+    font-size: 0.85em;
+  }
+
+  .research-list-paragraphs p,
+  .research-list-title {
+    font-size: 0.85em;
+  }
+
+  .team-member-bio,
+  .team-member-row > p {
+    font-size: 13px;
+  }
+
+  #team-students .team-member-row p,
+  #team-alumni .team-member-row p,
+  #cards-section .team-member-row p {
+    font-size: 12px;
   }
 }
 
@@ -3533,8 +3565,7 @@ a:focus-visible, button:focus-visible {
   margin: 0 0 1em;
   font-size: clamp(16px, 1.05vw, 18px);
   line-height: 1.6;
-  text-align: justify;
-  text-align-last: left;
+  text-align: left;
   transition: color .22s ease;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -3882,7 +3913,7 @@ body.team-page:after {
   margin: 0;
   font-size: 15px;
   line-height: 1.6;
-  text-align: justify;
+  text-align: left;
 }
 
 .member-degree {
@@ -4149,10 +4180,12 @@ body.team-page:after {
   color: rgba(26, 21, 16, 0.65);
 }
 
-.publications-page .hero-inline-tab:hover {
-  color: #0a0806;
-  text-shadow: 0 1px 8px rgba(255, 252, 245, 0.9), 0 2px 12px rgba(0, 0, 0, 0.18);
-  transform: translateY(-3px) scale(1.04);
+@media (hover: hover) {
+  .publications-page .hero-inline-tab:hover {
+    color: #0a0806;
+    text-shadow: 0 1px 8px rgba(255, 252, 245, 0.9), 0 2px 12px rgba(0, 0, 0, 0.18);
+    transform: translateY(-3px) scale(1.04);
+  }
 }
 
 .publications-page .hero-inline-tab.w--current {
@@ -4542,7 +4575,7 @@ body.team-page:after {
   #team-students .team-members-list,
   #team-alumni .team-members-list,
   #cards-section .team-members-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
   }
 }
@@ -4551,7 +4584,8 @@ body.team-page:after {
   #team-students .team-members-list,
   #team-alumni .team-members-list,
   #cards-section .team-members-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
 }
 
@@ -4585,7 +4619,9 @@ body.team-page:after {
 @media screen and (max-width: 767px) {
   .hero-overlay-box.hero-lockup {
     width: calc(100vw - 16px);
-    top: 220px;
+    top: 260px;
+    transform: translateX(-50%) scale(0.85);
+    transform-origin: 50% 0;
   }
 }
 
