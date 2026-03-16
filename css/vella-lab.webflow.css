@@ -4123,9 +4123,17 @@ body.team-page:after {
 .publications-page {
   position: relative;
   overflow-x: hidden;
-  background: url('../images/publication_background.png') no-repeat center center fixed;
-  background-size: cover;
   min-height: 100vh;
+}
+
+/* Fixed background via pseudo-element so it works on mobile (background-attachment:fixed is unsupported on iOS) */
+.publications-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('../images/publication_background.png') no-repeat center center;
+  background-size: cover;
 }
 
 .publications-page .hero-inline-tab {
