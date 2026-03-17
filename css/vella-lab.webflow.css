@@ -4292,7 +4292,7 @@ body.team-page:after {
   display: flex;
   gap: 16px;
   width: max-content;
-  animation: moments-scroll 45s linear infinite;
+  animation: moments-scroll 28s linear infinite;
 }
 
 .moments-slide {
@@ -4316,6 +4316,12 @@ body.team-page:after {
 @keyframes moments-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@media screen and (max-width: 767px) {
+  .moments-scroll-track {
+    animation-duration: 24s;
+  }
 }
 
 /* ---- Publications page ---- */
