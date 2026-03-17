@@ -3423,6 +3423,8 @@ a:focus-visible, button:focus-visible {
   }
 
   .statement-text {
+    text-align: left;
+    text-align-last: auto;
     font-size: 13px;
     line-height: 1.56;
   }
