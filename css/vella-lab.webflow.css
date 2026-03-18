@@ -4292,7 +4292,7 @@ body.team-page:after {
   display: flex;
   gap: 16px;
   width: max-content;
-  animation: moments-scroll 22s linear infinite;
+  animation: moments-scroll 25.3s linear infinite;
 }
 
 .moments-slide {
@@ -4320,7 +4320,7 @@ body.team-page:after {
 
 @media screen and (max-width: 767px) {
   .moments-scroll-track {
-    animation-duration: 18s;
+    animation-duration: 20.7s;
   }
 }
 
