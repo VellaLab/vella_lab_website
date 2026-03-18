@@ -349,8 +349,9 @@
   <script src="js/webflow.js" type="text/javascript"></script>
   <script type="text/javascript">
     (function () {
+      var wrap = document.querySelector(".moments-scroll-wrap");
       var track = document.querySelector(".moments-scroll-track");
-      if (!track) return;
+      if (!track || !wrap) return;
 
       var restartTimer;
       function restartScroll() {
@@ -370,11 +371,24 @@
       });
 
       window.addEventListener("load", scheduleRestart);
-      window.addEventListener("resize", scheduleRestart);
-      window.addEventListener("orientationchange", scheduleRestart);
-      document.addEventListener("visibilitychange", function () {
-        if (!document.hidden) scheduleRestart();
-      });
+
+      function normalizeScrollBounds() {
+        var maxScroll = wrap.scrollWidth - wrap.clientWidth;
+        if (maxScroll <= 1) return;
+        if (wrap.scrollLeft >= maxScroll - 1) wrap.scrollLeft = 1;
+        if (wrap.scrollLeft <= 0) wrap.scrollLeft = maxScroll - 1;
+      }
+
+      wrap.addEventListener("scroll", normalizeScrollBounds, { passive: true });
+
+      var isPaused = false;
+      function togglePause() {
+        isPaused = !isPaused;
+        track.style.animationPlayState = isPaused ? "paused" : "running";
+      }
+
+      track.addEventListener("click", togglePause);
+      track.style.cursor = "pointer";
     })();
   </script>
 </body>

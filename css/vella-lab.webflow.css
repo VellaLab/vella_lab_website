@@ -4297,7 +4297,8 @@ body.team-page:after {
 
 .moments-slide {
   flex-shrink: 0;
-  width: auto;
+  width: fit-content;
+  display: flex;
   height: 200px;
   border-radius: 8px;
   overflow: hidden;
