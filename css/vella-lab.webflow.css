@@ -1943,6 +1943,43 @@ body.home-page::after {
   transform: none;
 }
 
+/* Home hero: tabs on variable microscopy imagery — higher contrast + legibility shadow */
+.home-page .hero-inline-tab {
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(0, 0, 0, 0.55);
+}
+
+.home-page .hero-inline-tab:not(.w--current) {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.88),
+    0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+@media (hover: hover) {
+  .home-page .hero-inline-tab:not(.w--current):hover {
+    color: #ffffff;
+    text-shadow:
+      0 0 1px rgba(0, 0, 0, 0.9),
+      0 1px 3px rgba(0, 0, 0, 0.85),
+      0 0 20px rgba(0, 0, 0, 0.55);
+  }
+}
+
+.home-page .hero-inline-tab.w--current,
+.home-page .hero-inline-tab.w--current:hover {
+  color: #ffffff;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.92),
+    0 1px 3px rgba(0, 0, 0, 0.88),
+    0 0 20px rgba(0, 0, 0, 0.6);
+}
+
 .research-header-image-wrap {
   position: relative;
   overflow: hidden;
@@ -4469,31 +4506,48 @@ body.team-page:after {
 }
 
 .publications-page .hero-inline-tab {
-  color: #d6dde6;
-  text-shadow: none;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.85),
+    0 1px 3px rgba(0, 0, 0, 0.75),
+    0 0 18px rgba(0, 0, 0, 0.45);
 }
 
 .publications-page .hero-inline-tab:not(.w--current) {
-  color: rgba(214, 221, 230, 0.74);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.82),
+    0 1px 3px rgba(0, 0, 0, 0.72),
+    0 0 16px rgba(0, 0, 0, 0.42);
 }
 
 @media (hover: hover) {
   .publications-page .hero-inline-tab:not(.w--current):hover {
-    color: #e6ebf2;
-    text-shadow: none;
+    color: #ffffff;
+    text-shadow:
+      0 0 1px rgba(0, 0, 0, 0.88),
+      0 1px 3px rgba(0, 0, 0, 0.78),
+      0 0 20px rgba(0, 0, 0, 0.48);
     transform: translateY(-3.6px) scale(1.048);
   }
 }
 
 .publications-page .hero-inline-tab.w--current {
-  color: #d6dde6;
-  text-shadow: none;
+  color: #ffffff;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.88),
+    0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .publications-page .hero-inline-tab.w--current:hover {
-  color: #d6dde6;
+  color: #ffffff;
   letter-spacing: .12em;
-  text-shadow: none;
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.88),
+    0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 0, 0, 0.5);
   transform: none;
 }
 
