@@ -1,0 +1,32 @@
+# DNS reference for thevellalab.org → GitHub Pages
+# Add these records at your domain registrar or DNS host (not in GitHub).
+# Replace YOUR_GITHUB_PAGES_HOST below before saving at your DNS provider.
+#
+# For a USER site (repo named YOUR_USERNAME.github.io):
+#   YOUR_GITHUB_PAGES_HOST = YOUR_USERNAME.github.io
+#
+# For an ORGANIZATION project site (repo "vella_lab_website" under org "SomeOrg"):
+#   YOUR_GITHUB_PAGES_HOST = SomeOrg.github.io
+#   (CNAME target is always the *.github.io hostname — no /repository path in DNS.)
+#
+# Official GitHub reference (IPs can change; verify if setup fails):
+# https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+
+# --- Apex: thevellalab.org (required for bare domain) ---
+# Create FOUR separate A records (same name @ or thevellalab.org, depending on UI):
+A    @    185.199.108.153
+A    @    185.199.109.153
+A    @    185.199.110.153
+A    @    185.199.111.153
+
+# Optional IPv6 (recommended alongside A):
+AAAA @    2606:50c0:8000::153
+AAAA @    2606:50c0:8001::153
+AAAA @    2606:50c0:8002::153
+AAAA @    2606:50c0:8003::153
+
+# --- www subdomain (recommended; GitHub will redirect between www and apex) ---
+CNAME   www    YOUR_GITHUB_PAGES_HOST
+
+# Example if your GitHub org is "vellalab":
+# CNAME   www    vellalab.github.io
