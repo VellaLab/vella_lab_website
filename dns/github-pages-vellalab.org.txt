@@ -1,0 +1,31 @@
+# DNS reference for vellalab.org → GitHub Pages
+# Add these in GoDaddy: Domain → vellalab.org → DNS (or "Manage DNS").
+# Replace YOUR_GITHUB_PAGES_HOST for the www CNAME (see bottom).
+#
+# Official GitHub reference (IPs can change):
+# https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+
+# --- Apex: vellalab.org ---
+# In GoDaddy: Type = A, Name = @ (or leave host blank), Value = each IP below.
+# Add FOUR separate A records (same Name @, different Values):
+A    @    185.199.108.153
+A    @    185.199.109.153
+A    @    185.199.110.153
+A    @    185.199.111.153
+
+# Remove any old A records for @ that point elsewhere (e.g. parked page IPs).
+
+# Optional IPv6:
+AAAA @    2606:50c0:8000::153
+AAAA @    2606:50c0:8001::153
+AAAA @    2606:50c0:8002::153
+AAAA @    2606:50c0:8003::153
+
+# --- www.vellalab.org ---
+# Type = CNAME, Name = www, Value = YOUR_GITHUB_PAGES_HOST (see below).
+# GoDaddy: enter only the hostname, e.g. vellalab.github.io — no https://, no trailing dot required.
+CNAME   www    YOUR_GITHUB_PAGES_HOST
+
+# Examples:
+# Org "vellalab", any repo:     CNAME  www  vellalab.github.io
+# User "janedoe":               CNAME  www  janedoe.github.io

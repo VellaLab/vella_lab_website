@@ -1,65 +1,63 @@
-# Publish thevellalab.org from GitHub
+# Publish vellalab.org from GitHub
 
-This site is static HTML/CSS. Use **GitHub Pages** with the custom domain **thevellalab.org**.
+This site is static HTML/CSS. Use **GitHub Pages** with the custom domain **vellalab.org**.
 
 ## Files in this repository
 
 | File | Purpose |
 |------|--------|
-| `CNAME` | Tells GitHub Pages the canonical hostname is `thevellalab.org`. Must stay in the **published root** (repository root if you deploy from `/`). |
-| `.nojekyll` | Disables Jekyll so GitHub serves files as-is (avoids surprises with underscored paths or `README.md` processing). |
-| `dns/github-pages-thevellalab.org.txt` | Human-readable list of DNS records to create at your registrar. **Not** deployed as part of the site. |
+| `CNAME` | Tells GitHub Pages the hostname is `vellalab.org`. Must stay in the **published root**. |
+| `.nojekyll` | Disables Jekyll so GitHub serves files as-is. |
+| `dns/github-pages-vellalab.org.txt` | Copy-paste reference for DNS values. **Not** deployed with the site. |
 
-DNS itself is **not** stored in Git: you enter records in your domain registrar’s (or DNS host’s) control panel.
+DNS is configured at **GoDaddy** (or whatever hosts DNS for `vellalab.org`), not inside GitHub beyond the `CNAME` file.
 
-## 1. Push this repository to GitHub
+---
 
-If it is not already on GitHub, create a new repository and push the default branch (e.g. `main`).
+## GoDaddy: point vellalab.org at GitHub Pages (“propagate” DNS)
 
-## 2. Turn on GitHub Pages
+**Propagation** means: after you save records in GoDaddy, resolvers worldwide pick them up (often under an hour, sometimes up to 24–48 hours). You don’t “submit” DNS to GitHub—GitHub only checks that lookups for `vellalab.org` return the right answers.
 
-1. Open the repository on GitHub → **Settings** → **Pages** (under *Code and automation*).
-2. Under **Build and deployment** → **Source**, choose **Deploy from a branch**.
-3. Select your default branch and folder **`/ (root)`**, then save.
+1. Sign in at [godaddy.com](https://www.godaddy.com) → **My Products** → **Domains** → **vellalab.org** → **DNS** or **Manage DNS**.
 
-After a few minutes, the site should be available at:
+2. **Apex domain (`vellalab.org`):**  
+   - Delete **A** records on **`@`** that point to GoDaddy parking or old hosts (if any).  
+   - Add **four** **A** records:
+     - **Type:** A  
+     - **Name:** `@` (or “Domain” / blank—GoDaddy’s label for the root)  
+     - **Value:** `185.199.108.153`  
+   - Repeat for **`185.199.109.153`**, **`185.199.110.153`**, **`185.199.111.153`**.  
+   - (Optional) Add **AAAA** records for `@` using the IPv6 addresses in `dns/github-pages-vellalab.org.txt`.
 
-- **Project site:** `https://<user-or-org>.github.io/<repository-name>/`
-- **User/org site** (only if the repo is named `<username>.github.io`): `https://<user-or-org>.github.io/`
+3. **`www.vellalab.org`:**  
+   - Add **CNAME**: **Name** `www`, **Value** your GitHub Pages host, e.g. `vellalab.github.io` (replace with your **user or org** `*.github.io`—no `https://`, no `/repo`).  
+   - If an old `www` record exists, edit or remove it so only this CNAME remains for `www`.
 
-## 3. Connect the custom domain on GitHub
+4. Save. Wait for propagation, then on GitHub: **Settings** → **Pages** → **Custom domain** = `vellalab.org` → Save. When the check passes, enable **Enforce HTTPS**.
 
-1. Still under **Settings** → **Pages**, find **Custom domain**.
-2. Enter **`thevellalab.org`** and save.
+---
 
-GitHub may open a pull request or commit that adds/updates `CNAME`; if you already have `CNAME` in the repo with the same name, you are aligned.
+## GitHub (summary)
 
-3. When DNS is correct, enable **Enforce HTTPS** (can take up to a day after DNS propagates).
+1. **Settings** → **Pages** → **Source:** deploy from branch (e.g. `main`) / **`/` (root)**.  
+2. **Custom domain:** `vellalab.org` (must match the `CNAME` file in the repo).  
+3. After DNS works, **Enforce HTTPS**.
 
-Optional but recommended: [Verify your custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages) in **Settings** → **Pages** to reduce takeover risk.
+Optional: [Verify your custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
 
-## 4. Configure DNS at your registrar
+---
 
-Use the values in `dns/github-pages-thevellalab.org.txt`.
+## Ongoing maintenance
 
-**Apex (`thevellalab.org`):** add the four **A** records (and optionally the four **AAAA** records) to GitHub Pages’ IPs listed in that file.
-
-**`www.thevellalab.org`:** add a **CNAME** from `www` to your GitHub Pages hostname, e.g. `your-org.github.io` (no `https://`, no path). See GitHub’s table: [DNS records for your custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#dns-records-for-your-custom-domain).
-
-Propagation can take up to 24–48 hours.
-
-## 5. Ongoing maintenance
-
-- Edit HTML/CSS/images in this repo, commit, and push to the branch configured for Pages.
-- Keep **`CNAME`** in the published root with exactly:
+- Push HTML/CSS changes to the Pages branch; keep **`CNAME`** as:
 
   ```text
-  thevellalab.org
+  vellalab.org
   ```
 
-- If you use a GitHub Action to deploy to Pages instead of “Deploy from a branch”, configure the custom domain in repository **Settings** → **Pages**; the workflow must upload `CNAME` (and `.nojekyll`) into the artifact root.
+---
 
 ## Troubleshooting
 
-- [Troubleshooting custom domains and GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
-- Check DNS: `dig thevellalab.org +noall +answer -t A` should return the four GitHub A addresses from the doc above.
+- [GitHub: troubleshooting custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)  
+- Terminal check: `dig vellalab.org +noall +answer -t A` should list the four GitHub **A** addresses.
