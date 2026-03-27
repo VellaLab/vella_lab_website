@@ -2134,14 +2134,14 @@ body.home-page::after {
 
 @media screen and (max-width: 767px) {
   .site-vl-badge-footer {
-    top: calc(env(safe-area-inset-top, 0px) + clamp(10px, 2vw, 20px));
+    top: calc(env(safe-area-inset-top, 0px) + clamp(13px, 2.64vw, 26px));
     right: calc(env(safe-area-inset-right, 0px) + clamp(20px, 3.96vw, 40px));
   }
 
   .site-vl-badge-footer img {
-    width: min(clamp(23px, 10.59vw, 44px), min(100vw - 32px, 84px));
-    height: clamp(16px, 7.41vw, 30px);
-    max-width: min(100vw - 32px, 84px);
+    width: min(clamp(20px, 9vw, 37px), min(100vw - 32px, 71px));
+    height: clamp(14px, 6.3vw, 26px);
+    max-width: min(100vw - 32px, 71px);
   }
 }
 
