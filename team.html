@@ -20,6 +20,7 @@
 </head>
 <body class="team-page">
   <section class="research-header-image-wrap team-header-wrap team-hero-bg">
+    <a href="index.html" class="site-vl-badge" aria-label="Vella Lab home"><img src="images/VL_brown.jpg" width="1536" height="1536" alt="" decoding="async" fetchpriority="low"></a>
     <nav class="hero-inline-tabs page-hero-tabs">
       <a href="index.html" class="hero-inline-tab">Home</a>
       <a href="team.html" aria-current="page" class="hero-inline-tab w--current">Team</a>
@@ -370,25 +371,6 @@
       var wrap = document.querySelector(".moments-scroll-wrap");
       var track = document.querySelector(".moments-scroll-track");
       if (!track || !wrap) return;
-
-      var restartTimer;
-      function restartScroll() {
-        track.style.animation = "none";
-        void track.offsetWidth;
-        track.style.animation = "";
-      }
-
-      function scheduleRestart() {
-        window.clearTimeout(restartTimer);
-        restartTimer = window.setTimeout(restartScroll, 120);
-      }
-
-      var imgs = track.querySelectorAll("img");
-      imgs.forEach(function (img) {
-        if (!img.complete) img.addEventListener("load", scheduleRestart, { once: true });
-      });
-
-      window.addEventListener("load", scheduleRestart);
 
       function normalizeScrollBounds() {
         var maxScroll = wrap.scrollWidth - wrap.clientWidth;
