@@ -2136,7 +2136,7 @@ body.home-page::after {
   }
 
   .site-vl-badge img {
-    width: clamp(32px, 14.4vw, 58px);
+    width: clamp(22px, 10.08vw, 41px);
   }
 }
 
