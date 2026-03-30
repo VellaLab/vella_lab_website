@@ -4503,20 +4503,21 @@ body.team-page:after {
 }
 
 
+/* Full section width (sibling of .content-narrow); avoids broken 100vw + negative margin inside narrow column. */
 .moments-scroll-wrap {
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: none;
   overflow-x: auto;
   overflow-y: hidden;
-  margin-left: calc(50% - 50vw);
-  padding: 0 16px;
+  padding: 0 clamp(12px, 3vw, 24px);
   box-sizing: border-box;
-  scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
 }
 
 .moments-scroll-track {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
   gap: 16px;
   width: max-content;
   animation: moments-scroll 25.3s linear infinite;
@@ -4541,19 +4542,23 @@ body.team-page:after {
   object-fit: cover;
   object-position: center;
   display: block;
+  background-color: #252930;
 }
 
-/* Portrait originals: same strip height as landscape; width follows aspect ratio (no horizontal crop). */
+/* Portrait: reserve width from 3:4 assets so lazy-loaded flex items don’t collapse (was causing empty strip). */
 .moments-slide.moments-slide--portrait {
   width: auto;
+  min-width: calc(clamp(150px, 28vw, 200px) * 480 / 640);
 }
 
 .moments-slide.moments-slide--portrait img {
   width: auto;
   height: 100%;
   max-width: none;
+  aspect-ratio: 480 / 640;
   object-fit: contain;
   object-position: center;
+  flex-shrink: 0;
 }
 
 @keyframes moments-scroll {
@@ -4566,6 +4571,10 @@ body.team-page:after {
     width: clamp(200px, 44vw, 280px);
     height: clamp(140px, 32vw, 180px);
   }
+
+  .moments-slide.moments-slide--portrait {
+    min-width: calc(clamp(140px, 32vw, 180px) * 480 / 640);
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -4576,6 +4585,10 @@ body.team-page:after {
   .moments-slide {
     width: clamp(160px, 72vw, 260px);
     height: clamp(120px, 42vw, 160px);
+  }
+
+  .moments-slide.moments-slide--portrait {
+    min-width: calc(clamp(120px, 42vw, 160px) * 480 / 640);
   }
 }
 
