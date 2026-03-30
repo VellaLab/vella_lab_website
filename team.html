@@ -69,7 +69,7 @@
         </article>
         <article class="team-member-row">
           <div class="team-member-left">
-            <div class="team-member-image-wrap"><img src="images/hs/IMG_0090.jpg" alt="Kingsley Kumashie" class="team-member-image"></div>
+            <div class="team-member-image-wrap"><img src="images/IMG_3895.jpeg" alt="Kingsley Kumashie" class="team-member-image" width="720" height="701" decoding="async"></div>
             <h3 class="team-member-name">Kingsley Kumashie</h3>
             <p class="team-member-role">Postdoctoral Fellow</p>
           </div>
@@ -371,6 +371,20 @@
       var wrap = document.querySelector(".moments-scroll-wrap");
       var track = document.querySelector(".moments-scroll-track");
       if (!track || !wrap) return;
+
+      function markPortraitMoments() {
+        track.querySelectorAll(".moments-slide img").forEach(function (img) {
+          function apply() {
+            if (!img.naturalWidth || !img.naturalHeight) return;
+            var slide = img.closest(".moments-slide");
+            if (!slide) return;
+            if (img.naturalHeight > img.naturalWidth) slide.classList.add("moments-slide--portrait");
+          }
+          if (img.complete) apply();
+          else img.addEventListener("load", apply, { once: true });
+        });
+      }
+      markPortraitMoments();
 
       function normalizeScrollBounds() {
         var maxScroll = wrap.scrollWidth - wrap.clientWidth;

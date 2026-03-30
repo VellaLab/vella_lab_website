@@ -4541,7 +4541,19 @@ body.team-page:after {
   object-fit: cover;
   object-position: center;
   display: block;
-  vertical-align: middle;
+}
+
+/* Portrait originals: same strip height as landscape; width follows aspect ratio (no horizontal crop). */
+.moments-slide.moments-slide--portrait {
+  width: auto;
+}
+
+.moments-slide.moments-slide--portrait img {
+  width: auto;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 @keyframes moments-scroll {
