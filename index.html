@@ -8,7 +8,53 @@
   <link rel="preload" as="image" href="images/TC653B_dapi_lmo2_aicda-hero.jpg" fetchpriority="high">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/vella-lab.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/vella-lab.webflow.css?v=gold-news-2" rel="stylesheet" type="text/css">
+  <style>
+    /* Graduation highlight cards — soft metallic gold */
+    .home-news-card.home-news-card--gold {
+      background-color: #f3e8c4 !important;
+      background-image: linear-gradient(
+        145deg,
+        #faf3df 0%,
+        #f0e2b8 35%,
+        #e6d49a 55%,
+        #f5eccf 100%
+      ) !important;
+      border: 1px solid #d4c08a !important;
+      box-shadow:
+        0 12px 28px -22px rgba(120, 95, 40, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+    }
+    .home-news-card.home-news-card--gold .home-news-date {
+      color: #8a6d1f !important;
+    }
+    .home-news-card.home-news-card--gold .home-news-body,
+    .home-news-card.home-news-card--gold .home-news-body p {
+      color: #3a3424 !important;
+    }
+    /* Welcome highlight card — light green */
+    .home-news-card.home-news-card--mint {
+      background-color: #e8f4ea !important;
+      background-image: linear-gradient(
+        145deg,
+        #f3faf4 0%,
+        #e5f3e8 40%,
+        #d8ecdc 70%,
+        #eef7f0 100%
+      ) !important;
+      border: 1px solid #b7d4be !important;
+      box-shadow:
+        0 12px 28px -22px rgba(60, 110, 70, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+    }
+    .home-news-card.home-news-card--mint .home-news-date {
+      color: #3d7a4a !important;
+    }
+    .home-news-card.home-news-card--mint .home-news-body,
+    .home-news-card.home-news-card--mint .home-news-body p {
+      color: #2a3a2e !important;
+    }
+  </style>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -76,6 +122,24 @@
     </div>
     <div class="home-news-scroller">
       <div class="home-news-track">
+        <article class="home-news-card home-news-card--gold">
+          <p class="home-news-date">July 24, 2026</p>
+          <div class="home-news-body">
+            <p>🎓🎓🎓🎓🎓 Fresh out of the oven, Drrrrrrrr. Sam Barnett Dubensky!!! 🥂🥂🥂🥂🥂 There is not enough champange to toast to your milestones. May you get your second doctorate soon!</p>
+          </div>
+        </article>
+        <article class="home-news-card home-news-card--mint">
+          <p class="home-news-date">July 2026</p>
+          <div class="home-news-body">
+            <p>Welcome, Leela, to the Vella Lab!! We are so excited to have you! 🤗</p>
+          </div>
+        </article>
+        <article class="home-news-card home-news-card--gold">
+          <p class="home-news-date">June 29, 2026</p>
+          <div class="home-news-body">
+            <p>🎓🎓🎓🎓🎓 Congratulations Drrrrrrrr. Leena Babiker!!!! 🥂🥂🥂🥂🥂 We are so proud of all your achievements, and we feel so lucky to have been with you in the past five years. No more double trouble, and a new life begins!!</p>
+          </div>
+        </article>
         <article class="home-news-card">
           <p class="home-news-date">June 2026</p>
           <div class="home-news-body">
@@ -312,6 +376,7 @@
           <a href="mailto:thomas.barnettdubensky@pennmedicine.upenn.edu" class="site-footer-contact-person"><img src="images/hs/Sam-Barnett-Dubensky-Headshot.jpg" alt="Sam Barnett Dubensky" loading="lazy" decoding="async"><span>Sam Barnett Dubensky</span></a>
           <a href="mailto:qiy@chop.edu" class="site-footer-contact-person"><img src="images/hs/Screenshot-2023-09-08-at-4.55.21-PM.jpg" alt="Yi Qi" loading="lazy" decoding="async"><span>Yi Qi</span></a>
           <a href="mailto:katie.premo@pennmedicine.upenn.edu" class="site-footer-contact-person"><img src="images/hs/Katie-pic.jpg" alt="Katie Premo" loading="lazy" decoding="async"><span>Katie Premo</span></a>
+          <a href="mailto:leela.mahajan@pennmedicine.upenn.edu" class="site-footer-contact-person"><img src="images/hs/Leela-Mahajan-Headshot.jpg" alt="Leela Mahajan" loading="lazy" decoding="async"><span>Leela Mahajan</span></a>
           <a href="mailto:tianyu.lu@pennmedicine.upenn.edu" class="site-footer-contact-person"><img src="images/hs/TIANYU-pic.jpg" alt="Tianyu Lu" loading="lazy" decoding="async"><span>Tianyu Lu</span></a>
         </div>
       </div>
