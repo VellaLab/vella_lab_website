@@ -2787,7 +2787,7 @@ body.home-page::after {
 .site-footer-contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(6, auto);
   gap: 20px 36px;
   justify-items: start;
   width: auto;
@@ -2798,7 +2798,7 @@ body.home-page::after {
   display: flex;
   align-items: center;
   gap: 8px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: #1a1a1a;
   font-size: 15px;
   font-family: "Roboto", system-ui, sans-serif;
@@ -2908,7 +2908,7 @@ body.home-page .site-footer-contact-person img {
   height: 36px;
 }
 
-/* Home page: 2×5 grid */
+/* Home page: 2×6 grid (11 contacts) */
 body.home-page .site-footer-contact-person {
   transform: none;
   cursor: pointer;
@@ -2917,7 +2917,7 @@ body.home-page .site-footer-contact-person {
 body.home-page .site-footer-contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(6, auto);
   gap: 20px 28px;
   justify-items: start;
   width: auto;
@@ -3037,7 +3037,7 @@ body.team-page .site-footer-contact-person {
 @media (max-width: 1100px) {
   .site-footer-inner {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 28px;
     flex-wrap: nowrap;
     max-width: 1000px;
@@ -3062,7 +3062,7 @@ body.team-page .site-footer-contact-person {
     align-self: center;
   }
 
-  /* 2×5 contact grid on all pages when scaled/stacked */
+  /* 2-column contact grid when stacked */
   .site-footer-contact-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 20px;
@@ -4303,12 +4303,24 @@ body.team-page:after {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.team-member-mail:hover,
+.team-member-mail:focus,
+.team-member-mail:visited {
   text-decoration: none;
   color: inherit;
 }
 
+.team-member-mail .team-member-name {
+  text-decoration: none;
+}
+
 .team-member-mail:hover .team-member-name {
   color: #3c5f98;
+  text-decoration: none;
 }
 
 .team-member-image-wrap {
@@ -5242,7 +5254,8 @@ body.team-page:after {
   width: 340px;
   max-width: 340px;
   min-width: 340px;
-  height: 392px;
+  height: 460px;
+  min-height: 460px;
   box-sizing: border-box;
   padding: 18px;
   border-radius: 12px;
@@ -5291,10 +5304,12 @@ body.home-page .site-footer-contact-grid,
 .publications-page .site-footer-contact-grid {
   width: 100%;
   min-width: 0;
+  flex: 1 1 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(5, minmax(0, auto));
-  gap: 18px 18px;
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  gap: 12px 14px;
+  align-content: start;
 }
 
 .site-footer-contact-person {
@@ -5302,11 +5317,19 @@ body.home-page .site-footer-contact-grid,
   white-space: normal;
   font-size: 14px;
   line-height: 1.22;
+  text-decoration: none;
+}
+
+.site-footer-contact-person:hover,
+.site-footer-contact-person:focus,
+.site-footer-contact-person:visited {
+  text-decoration: none;
 }
 
 .site-footer-contact-person span {
   min-width: 0;
   overflow-wrap: anywhere;
+  text-decoration: none;
 }
 
 .site-footer-logos-grid {
@@ -5346,11 +5369,13 @@ body.home-page .site-footer-contact-person {
     width: min(704px, calc(100% - 48px));
     grid-template-columns: repeat(2, 340px);
     gap: 18px;
+    align-items: stretch;
   }
 
   .site-footer-logos {
     grid-column: 1 / -1;
     justify-self: center;
+    height: 460px;
   }
 }
 
@@ -5370,5 +5395,7 @@ body.home-page .site-footer-contact-person {
     width: 100%;
     max-width: 100%;
     min-width: 0;
+    height: auto;
+    min-height: 0;
   }
 }
