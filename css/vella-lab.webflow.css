@@ -4361,6 +4361,13 @@ body.team-page:after {
   letter-spacing: .02em;
 }
 
+.team-member-note {
+  color: #8a6128;
+  margin: 2px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .team-member-role {
   color: #3c5f98;
   margin: 0;
